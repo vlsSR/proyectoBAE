@@ -54,7 +54,13 @@
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <scope>5.1.0</scope>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
