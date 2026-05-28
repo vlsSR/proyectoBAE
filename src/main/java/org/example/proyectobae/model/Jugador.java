@@ -1,23 +1,25 @@
 package org.example.proyectobae.model;
 
-public class Jugador {
+import lombok.Getter;
+
+import java.io.Serializable;
+
+@Getter
+public class Jugador implements Serializable {
 
     private String nombre;
     private double puntuacion;
-    private int nivel;
 
-    public Jugador(String nombre, double puntuacion, int nivel) {
-        this.nombre = nombre;
-        this.puntuacion = puntuacion;
-        this.nivel = nivel;
+    public Jugador() {
     }
 
-    public String getNombre() { return nombre; }
-    public double getPuntuacion() { return puntuacion; }
-    public int getNivel() { return nivel; }
+    public Jugador(String nombre, double puntuacion) {
+        this.nombre = nombre;
+        this.puntuacion = puntuacion;
+    }
 
     @Override
     public String toString() {
-        return nombre + " | Nivel: " + nivel + " | Puntos: " + puntuacion;
+        return nombre + " | Nivel: " + " | " + " Puntos: " + puntuacion;
     }
 }
