@@ -1,9 +1,11 @@
 package org.example.proyectobae.model;
 
 import lombok.Getter;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 
+@RedisHash
 @Getter
 public class Jugador implements Serializable {
 
