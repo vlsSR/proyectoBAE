@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 @RestController
@@ -17,14 +19,52 @@ public class Controller {
     private Servicio servicio;
 
     @GetMapping("/{juego}")
-    public List<Jugador> listar(@PathVariable String juego) {
-        return servicio.obtenerRanking(juego);
+    public ResponseEntity<List<Jugador>> listarRanking(@PathVariable String juego) {
+        List<Jugador> jugadores = servicio.obtenerRanking(juego);
+
+        if (jugadores.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(jugadores);
     }
 
-    @PostMapping("/{juego}")
+    @GetMapping("/juegos")
+    public ResponseEntity<Set<String>> listarJuegos() {
+        Set<String> listaJuegos = servicio.obtenerTodosLosJuegos();
+        if (listaJuegos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(listaJuegos);
+    }
+
+    @GetMapping("/{juego}/{nombre}")
+    public ResponseEntity<Jugador> obtenerJugadorJuego(@PathVariable String juego, @PathVariable String nombre) {
+        Jugador jugador = servicio.obtenerPuntuacionJugador(juego, nombre);
+
+        if (jugador == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(jugador);
+    }
+
+    @GetMapping("/jugador/{nombre}")
+    public ResponseEntity<Map<String, Double>> obtenerRankingGlobal(@PathVariable String nombre) {
+        Map<String, Double> historial = servicio.obtenerPuntuacionesGlobal(nombre);
+
+        if (historial.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(historial);
+    }
+
+    /*@PostMapping("/{juego}")
     public ResponseEntity<String> insertar(@PathVariable String juego, @RequestBody Jugador jugador) {
         servicio.registrarPuntuacion(juego, jugador.getNombre(), jugador.getPuntuacion());
         return ResponseEntity.ok("Puntuacion registrada correctamente en " + juego);
-    }
+    }*/
 
 }

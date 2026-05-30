@@ -1,8 +1,6 @@
 package org.example.proyectobae.model;
 
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 
