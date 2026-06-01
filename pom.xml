@@ -59,6 +59,11 @@
             <artifactId>jedis</artifactId>
             <scope>5.1.0</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 

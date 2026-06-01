@@ -20,6 +20,6 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return nombre + " | Nivel: " + " | " + " Puntos: " + puntuacion;
+        return "Nombre: " + nombre + " | Puntuacion: "+ puntuacion;
     }
 }
