@@ -15,9 +15,9 @@ public class Servicio {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    /*public void registrarPuntuacion(String idJuego, String nombreJugador, double puntos) {
+    public void registrarPuntuacion(String idJuego, String nombreJugador, double puntos) {
         redisTemplate.opsForZSet().add("ranking:" + idJuego, nombreJugador, puntos);
-    }*/
+    }
 
     public List<Jugador> obtenerRanking(String idJuego) {
         Set<ZSetOperations.TypedTuple<String>> ranking = redisTemplate.opsForZSet()
@@ -62,5 +62,23 @@ public class Servicio {
             }
         }
         return resultados;
+    }
+
+    public Set<String> obtenerTodosLosJugadoresDelSistema() {
+        List<String> todosLosJugadores = new java.util.ArrayList<>();
+
+        // 1. Conseguimos el set con los nombres de todos los juegos ("Tetris", "Pacman", etc.)
+        Set<String> juegos = obtenerTodosLosJuegos();
+
+        // 2. Recorremos cada juego para traer a sus jugadores
+        for (String juego : juegos) {
+            List<Jugador> jugadoresDelJuego = obtenerRanking(juego);
+            if (jugadoresDelJuego != null) {
+                for (Jugador jugador : jugadoresDelJuego) {
+                    todosLosJugadores.add(jugador.getNombre());
+                }
+            }
+        }
+        return new HashSet<>(todosLosJugadores);
     }
 }
