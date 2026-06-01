@@ -61,10 +61,21 @@ public class Controller {
         return ResponseEntity.ok(historial);
     }
 
-    /*@PostMapping("/{juego}")
+    @PostMapping("/{juego}")
     public ResponseEntity<String> insertar(@PathVariable String juego, @RequestBody Jugador jugador) {
         servicio.registrarPuntuacion(juego, jugador.getNombre(), jugador.getPuntuacion());
         return ResponseEntity.ok("Puntuacion registrada correctamente en " + juego);
-    }*/
+    }
+
+    @GetMapping("/todos")
+    public ResponseEntity<Set<String>> listarTodosLosJugadores() {
+        Set<String> todos = servicio.obtenerTodosLosJugadoresDelSistema();
+
+        if (todos.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Devuelve 204 si está vacío
+        }
+
+        return ResponseEntity.ok(todos); // Devuelve 200 con la lista completa
+    }
 
 }

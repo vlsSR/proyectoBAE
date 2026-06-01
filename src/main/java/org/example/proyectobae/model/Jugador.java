@@ -1,9 +1,9 @@
 package org.example.proyectobae.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
-
 @Getter
 public class Jugador implements Serializable {
 
