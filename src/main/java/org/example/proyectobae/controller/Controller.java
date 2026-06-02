@@ -77,5 +77,16 @@ public class Controller {
 
         return ResponseEntity.ok(todos); // Devuelve 200 con la lista completa
     }
+    @PutMapping("/{juego}")
+    public ResponseEntity<String> actualizarPuntuacion(
+            @PathVariable String juego,
+            @RequestBody Jugador jugador) {
+
+        // Reutilizamos la función existente del servicio
+        servicio.registrarPuntuacion(juego, jugador.getNombre(), jugador.getPuntuacion());
+
+        return ResponseEntity.ok("Puntuación actualizada correctamente en " + juego);
+    }
+
 
 }
