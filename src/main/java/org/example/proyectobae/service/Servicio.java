@@ -81,4 +81,9 @@ public class Servicio {
         }
         return new HashSet<>(todosLosJugadores);
     }
+    public void eliminarJugador(String juego,String jugador) {
+        redisTemplate.opsForZSet().remove("ranking:" + juego, jugador);
+
+    }
 }
+
