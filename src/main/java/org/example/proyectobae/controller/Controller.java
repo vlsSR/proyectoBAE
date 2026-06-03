@@ -88,5 +88,11 @@ public class Controller {
         return ResponseEntity.ok("Puntuación actualizada correctamente en " + juego);
     }
 
+    @DeleteMapping("/{juego}/{jugador}")
+    public ResponseEntity<String> eliminarJugador(@PathVariable String juego, @PathVariable String jugador){
+        servicio.eliminarJugador(juego, jugador);
+
+        return ResponseEntity.ok("Jugador eliminado correctamente " + juego);
+    }
 
 }
