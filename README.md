@@ -65,11 +65,17 @@ El proyecto está completamente contenerizado mediante Docker y se compone de do
 Para que el despliegue funcione correctamente, los archivos deben respetar la siguiente estructura de directorios:
 
 📁 proyecto/
+
 ├── 📄 docker-compose.yml 
+
 └── 📁 Springboot/ 
+
     └── 📁 proyectoBAE/ 
+    
         ├── 📄 Dockerfile 
+        
         ├── 📄 pom.xml 
+        
         └── 📁 src/
 
   ## Instrucciones de Inicio
