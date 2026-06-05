@@ -62,8 +62,9 @@ El proyecto está completamente contenerizado mediante Docker y se compone de do
 
 ## Estructura del Proyecto
 
-Para que el despliegue funcione correctamente, los archivos deben respetar la siguiente estructura de directorios:
-```
+Para que el despliegue funcione correctamente con la estructura por defecto, los archivos deben respetar la siguiente estructura de directorios:
+
+```Estructura por defecto
 📁 proyecto/
 ├── 📄 docker-compose.yml 
 └── 📁 Springboot/ 
@@ -71,7 +72,14 @@ Para que el despliegue funcione correctamente, los archivos deben respetar la si
         ├── 📄 Dockerfile 
         ├── 📄 pom.xml 
         └── 📁 src/
-````
+```
+
+En caso de querer cambiar esta estructura acceder al `compose.yml` y editar:
+```
+ mi-api-game:
+    build:
+      context: ./RUTA AQUI
+```
 
   ## Instrucciones de Inicio
 
